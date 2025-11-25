@@ -17,21 +17,22 @@
     .wrap {
       text-align: center;
     }
-    .spinner {
-      width: 64px;
-      height: 64px;
-      border: 6px solid rgba(226, 232, 240, 0.2);
-      border-top-color: #38bdf8;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 14px;
+
+    /* Logo Animation */
+    .logo {
+      width: 120px;
+      animation: pulse 1.5s infinite ease-in-out;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.6; }
     }
+
     .text {
+      margin-top: 18px;
       font-size: 16px;
-      letter-spacing: 0.2px;
     }
     .countdown {
       margin-top: 6px;
@@ -42,14 +43,13 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="spinner"></div>
+    <img src="logo.jpg" class="logo" alt="Loading...">
     <div class="text">Please wait, redirecting...</div>
     <div class="countdown" id="countdown">5 seconds</div>
   </div>
 
   <script>
-    // ✅ Set your redirect URL here
-    const REDIRECT_URL = "https://example.com";
+    const REDIRECT_URL = "https://alfajrcambodia.com/rhbnight/vote-performance";
     const DELAY_SECONDS = 5;
 
     let remaining = DELAY_SECONDS;
