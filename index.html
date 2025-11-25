@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting...</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .wrap {
+      text-align: center;
+    }
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border: 6px solid rgba(226, 232, 240, 0.2);
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 14px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .text {
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .countdown {
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="spinner"></div>
+    <div class="text">Please wait, redirecting...</div>
+    <div class="countdown" id="countdown">5 seconds</div>
+  </div>
+
+  <script>
+    // ✅ Set your redirect URL here
+    const REDIRECT_URL = "https://example.com";
+    const DELAY_SECONDS = 5;
+
+    let remaining = DELAY_SECONDS;
+    const el = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      remaining--;
+      el.textContent = remaining + (remaining === 1 ? " second" : " seconds");
+      if (remaining <= 0) clearInterval(timer);
+    }, 1000);
+
+    setTimeout(() => {
+      window.location.href = REDIRECT_URL;
+    }, DELAY_SECONDS * 1000);
+  </script>
+</body>
+</html>
